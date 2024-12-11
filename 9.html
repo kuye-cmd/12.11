@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        html{
+            transition: background-color 2s;
+        }
+        div{
+            height: 300px;
+            width: 3px;
+            background-color: aqua;
+            border-radius: 3px;
+            position: fixed;
+            right: 300px;
+            top: 0;
+            transition: height 1s;
+
+        }
+
+        p{
+            width: 30px;
+            height: 30px;
+            border-radius: 100%;
+            /* background-color: aliceblue; */
+            border: 3px solid aqua;
+            position: fixed;
+            right: 284px;
+            top: 282px;
+            transform: translateY(0px);
+            transition: transform 1s;
+        }
+    </style>
+</head>
+<body>
+    <div></div>
+    <p></p>
+</body>
+<script>
+    var div=document.querySelector("div")
+    var p1=document.querySelector("p")
+    var cont = 1;
+    console.dir(p1.style.transform)
+    div.onclick=TurnOffTheLight;
+    p1.onclick=TurnOffTheLight;
+    function TurnOffTheLight(p) {
+        if (cont) {
+            div.style.height="400px";
+            p1.style.transform="translateY(100px)";
+            document.documentElement.style.backgroundColor="black";
+            cont=0
+        }else {
+            div.style.height="300px";
+            p1.style.transform="translateY(0px)";
+            document.documentElement.style.backgroundColor="white";
+            cont=1;
+        }
+
+    }
+</script>
+</html>

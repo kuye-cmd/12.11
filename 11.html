@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .color1{
+            transition:width 1s,transform 1s;
+            width: 150px;
+            height: 30px;
+            padding: 2.5px 0;
+            background-color: #333;
+            top: 0px;
+            right: 0;
+            top: 50px;
+            position: fixed;
+            border-radius: 50px;
+            overflow: hidden;
+        }
+        .color1 li{
+            width: 30px;
+            height: 30px;
+            border-radius: 100%;
+            float: left;
+            margin-left: 10px;
+            margin-bottom: 10px;
+        }
+        .color1 li:nth-child(1){
+            background-color: #ccc;
+        }
+
+        .color1 li:nth-child(2){
+            background-color: purple;
+        }
+
+        .color1 li:nth-child(3){
+            background-color: tomato;
+        }
+
+        .color1 li:nth-child(4){
+            background-color: yellow;
+        }
+
+        .color1 li:nth-child(5){
+            background-color: rgb(81, 91, 226);
+        }
+
+        .color1 li:nth-child(6){
+            background-color: rgb(64, 160, 64);
+        }
+
+        .color1 li:nth-child(7){
+            background-color:#555;
+        }
+
+        .nav{
+            width: 150px;
+            height: 35px;
+            background-color: #333;
+            display: flex;
+            line-height: 35px;
+            justify-content: space-around;
+            right: 0;
+            position: fixed;
+            top: 50px;
+            border-radius: 50px;
+        }
+        ul li {
+            font-size: 12px;
+            text-align: center;
+            color: white;
+            list-style: none;
+        }
+
+        div{
+            width: 3000px;
+            height: 3000px;
+            border-radius: 100%;
+            background-color: #ccc;
+            position: fixed;
+            top: -3000px;
+            right: -880px;
+            transition: transform 2s;
+        }
+
+        .pos,
+        .language{
+            width: 110px;
+            height: 90px;
+            background-color: #333;
+            position: fixed;
+            right: 0;
+            top: 85px;
+            border-radius: 8px;
+            padding: 5px 5px;
+            display: none;
+        }
+
+        .language{
+            width: 70px;
+            height: 60px;
+            display: none;
+
+        }
+
+        .pos li,
+        .language li{
+            list-style: none;
+            width: 100%;
+            height: 30px;
+            line-height: 30px;
+            font-size: 14px;
+            border-radius: 8px;
+        }
+
+        .pos li:nth-child(1),
+        .language li:nth-child(1){
+            background-color: rgba(255, 255 , 255, 0.2);
+        }
+    </style>
+</head>
+<body>
+    <div></div>
+    <ul class="color1">
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+    <ul class="nav">
+        <li>颜色</li>
+        <li>位置</li>
+        <li>文字</li>
+        <li>变换</li>
+    </ul>
+    <ul class="pos">
+        <li>居左</li>
+        <li>居中</li>
+        <li>居右</li>
+    </ul>
+    <ul class="language">
+        <li>简体中文</li>
+        <li>英语</li>
+    </ul>
+</body>
+<script>
+    //弹出颜色框
+    var color2 = document.querySelector('.nav li:nth-child(1)')
+    var color1 = document.querySelector('.color1')
+    var cont =1;
+    color2.onclick =function(){
+        if (cont) {
+            color1.style.width="350px";
+            color1.style.transform="translateX(-100px)"
+            cont=0;
+        }else{
+            color1.style.width="150px";
+            color1.style.transform="translateX(0px)"
+            cont=1;
+        }
+    }
+
+    // 获取颜色
+    var colorp=document.querySelectorAll('.color1 li');
+    for (let i = 0; i < colorp.length; i++) {
+        colorp[i].onclick=function(){
+            var div = document.querySelector('div');
+            div.style.backgroundColor=window.getComputedStyle(colorp[i]).backgroundColor;
+            
+        }
+    }
+    // 颜色变换
+    var cont2=0
+    var exchange=document.querySelector('.nav li:nth-child(4)');
+    exchange.onclick=function (){
+        var div = document.querySelector('div');
+        if (cont2) {
+            div.style.transform=start;
+            cont2=0;
+        }else{
+            div.style.transform=end;
+            cont2=1;
+        }
+    }
+
+    //位置
+    var pos=document.querySelector('.nav li:nth-child(2)');
+    var pos_cont=1;
+    var pos_lcr=document.querySelector('.pos')
+    pos.onclick=function(){
+        if (pos_cont) {
+            pos_lcr.style.display="block"
+            pos_cont=0;
+        }else{
+            pos_lcr.style.display="none";
+            pos_cont=1;
+        }
+    };
+    var posli = document.querySelectorAll('.pos li');
+    var start="translate(0px,2000px)";
+    var end="translate(0px,0px)";
+    for (let j = 0; j < posli.length; j++) {
+        posli[j].onclick=function(){
+            var div = document.querySelector('div');
+            for (let i1 = 0; i1 < posli.length; i1++) {
+                posli[i1].style.backgroundColor="rgba(255, 255 , 255, 0)";
+            }
+            posli[j].style.backgroundColor="rgba(255, 255 , 255, 0.2)";
+            if (j===0) {
+                div.style.right="3000px";
+                start="translate(4000px,2000px)";
+            }else if (j===2) {
+                div.style.right="-3000px";
+                start="translate(-2000px,2000px)";
+            }else if(j==1){
+                div.style.right="calc(50% - 1500px)";
+                start="translate(0px,1500px)";
+            }
+        }
+    }
+    document.onclick=function(e){
+        if (e.target.innerText=="居左" || e.target.innerText=="居中" || e.target.innerText=="居右" ||e.target.innerText=="位置") {
+            pos_lcr.style.display="blank";
+        }else{pos_lcr.style.display="none";}
+    }
+</script>
+</html>

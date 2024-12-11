@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        html{
+            transition:background-color 1s;
+        }
+        div{
+            width: 600px;
+            height: 400px;
+            border-radius: 250px;
+            border: 1px solid skyblue;
+            background-color: skyblue;
+            position: relative;
+            overflow: hidden;
+        }
+        .p1{
+            width: 380px;
+            height: 390px;
+            border-radius: 100%;
+            background-color: tomato;
+            margin-left: 5px;
+            margin-top: 5px;
+            transition: background-color 1s, transform 1s;
+
+        }
+
+        .p2{
+            width: 380px;
+            height: 390px;
+            border-radius: 100%;
+            /* background:linear-gradient(rgb(255,99,71),red); */
+            background-color: skyblue;
+            margin-left: 5px;
+            margin-top: 5px;
+            transition:transform 1s;
+            position: absolute;
+            top: 0;
+            /* transition:background-color 1s; */
+            left: 0;
+            transform:translateX(-400px);
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <p class="p1"></p>
+        <p class="p2"></p>
+    </div>
+</body>
+<script>
+    var p1=document.querySelector('.p1')
+    var p2=document.querySelector('.p2')
+    p1.onclick=black;
+    p2.onclick=black;
+    function black(){
+        if (p1.style.transform==="translateX(210px)") {
+            p1.style.transform="translateX(0px)"
+            p2.style.transform="translateX(-400px)"
+            p1.style.backgroundColor="tomato";
+            document.documentElement.style.backgroundColor="white";
+        }else{
+            p1.style.transform="translateX(210px)"
+            p2.style.transform="translateX(120px)"
+            p1.style.backgroundColor="yellow";
+            document.documentElement.style.backgroundColor="black";
+        }
+    }
+</script>
+</html>

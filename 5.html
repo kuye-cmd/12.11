@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div style="height: 3000px;background: linear-gradient(yellow,pink);">
+        演示器模仿定时器
+    </div>
+</body> 
+<script>
+    window.addEventListener("scroll", function () {
+    if (document.documentElement.clientHeight + document.documentElement.scrollTop >= document.documentElement.scrollHeight) {
+        var isScrolling = true;  // 新增一个标志位来控制整体逻辑
+        var times = window.setTimeout(function scrollU() {
+            if (document.documentElement.scrollTop === 0) {
+                isScrolling = false;  // 当滚动条回到顶部，设置标志位为 false，停止后续逻辑
+            }
+            if (isScrolling) {  // 根据标志位判断是否继续执行
+                document.documentElement.scrollTop-=50;
+                window.setTimeout(scrollU, 17);
+            }
+        }, 0);
+    }
+})
+    function scrollUp() {
+        
+    }
+</script>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        html{
+            transition:background-color 1s;
+        }
+        div{
+            width: 600px;
+            height: 400px;
+            border-radius: 250px;
+            border: 1px solid skyblue;
+        }
+        p{
+            width: 380px;
+            height: 390px;
+            border-radius: 100%;
+            background-color: skyblue;
+            margin-left: 5px;
+            margin-top: 5px;
+            transition:transform 1s;
+        }
+        /* p:hover{
+            transform: translateX(210px);
+            background-color: black;
+        } */
+    </style>
+</head>
+<body>
+    <div>
+        <p></p>
+    </div>
+</body>
+<script>
+    var p=document.querySelector('p')
+    p.onclick=function(){
+        if (p.style.transform==="translateX(210px)") {
+            p.style.transform="translateX(0px)"
+            document.documentElement.style.backgroundColor="white";
+        }else{
+            p.style.transform="translateX(210px)"
+            document.documentElement.style.backgroundColor="black";
+        }
+    }
+</script>
+</html>

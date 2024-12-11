@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        div{
+            width: 100px;
+            height: 100px;
+            background-color: yellow;
+            transform: translateX(0);
+        }
+
+        p{
+            height: 2000px;
+            width: 1px;
+            background-color: black;
+            position: absolute;
+            top: 0;
+            left: 800px;
+        }
+    </style>
+</head>
+<body>
+    <div></div>
+    <p></p>
+</body>
+<script>
+    var div = document.querySelector("div");
+    console.dir(div);
+    console.log(getComputedStyle(div).transform);
+    var next=0
+    var time =1/266;
+    var once=Besar(0,1.57,0.97,-0.71,times)*800;
+    var times = window.setInterval(function(){
+        time = time+1/266;
+        next=Besar(0,1.57,0.97,-0.56,time)*800;
+        div.style.transform=`translateX(${next}px)`;
+        // console.log(next);
+        
+        // console.log(getComputedStyle(div).transform);
+        // console.log(1);
+        
+        if (next+3>800) {
+            div.style.transform=`translateX(800px)`;
+            clearInterval(times)
+        }
+    }, 17);
+    console.log(1);
+    
+    console.log(Besar(0,1.57,1,-0.56,0.2));
+    console.log(Besar(0,1.57,1,-0.56,0.3));
+    console.log(Besar(0,1.57,1,-0.56,0.4));
+    console.log(Besar(0,1.57,1,-0.56,0.5));
+    console.log(Besar(0,1.57,1,-0.56,0.6));
+    console.log(Besar(0,1.57,1,-0.56,0.7));
+    console.log(Besar(0,1.57,1,-0.56,0.8));
+    console.log(Besar(0,1.57,1,-0.56,0.9));
+    // console.log(Besar(0,1.57,0.97,-0.56,0.3));
+    
+    function Besar(x1,y1,x2,y2,t) {
+        var y=3*t*Math.pow((1-t),2)*y1 + 3*Math.pow(t,2)*(1-t)*y2+Math.pow(t,3);
+        return y;
+    }
+</script>
+</html>
